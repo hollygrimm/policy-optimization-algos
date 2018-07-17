@@ -12,7 +12,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 """
 
 
-from simplepg.simple_utils import register_test, nprs
+from simple_utils import register_test, nprs
 import numpy as np
 
 register_test(
