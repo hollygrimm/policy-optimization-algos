@@ -308,9 +308,12 @@ def main(env_id, batch_size, discount, learning_rate, n_itrs, render, use_baseli
                 :return: A matrix of size (|A|*(|S|+1)) * (|A|*(|S|+1)), i.e. #columns and #rows are the number of 
                 entries in theta
                 """
-                d = len(theta.flatten())
-                F = np.zeros((d, d))
-                "*** YOUR CODE HERE ***"
+                d = len(theta.flatten()) 
+                F = np.zeros((d, d)) # Shape = (|A|* (|S|+1), |A|* (|S|+1))
+                for ob, action in zip(all_observations, all_actions):
+                    grad_logp = get_grad_logp_action(theta, ob, action).flatten() # Shape = (|A|* (|S|+1),)
+                    F += np.outer(grad_logp, grad_logp)
+                F /= len(all_actions)
                 return F
 
             def compute_natural_gradient(F, grad, reg=1e-4):
