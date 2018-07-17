@@ -113,9 +113,11 @@ def cartpole_get_grad_logp_action(theta, ob, action):
     :param action: An integer
     :return: A matrix of size |A| * (|S|+1)
     """
-    grad = np.zeros_like(theta)
-    "*** YOUR CODE HERE ***"
-    return grad
+    e_a = np.zeros(theta.shape[0]) # |A|
+    e_a[action] = 1.
+    ob_1 = include_bias(ob) # |S| + 1
+    logits = ob_1.dot(theta.T) # |S| + 1  * (|S|+1) * |A|
+    return np.outer(e_a - softmax(logits), ob_1)  # (|A| - |A|) * |S| + 1
 
 
 def cartpole_get_action(theta, ob, rng=np.random):
@@ -279,7 +281,6 @@ def main(env_id, batch_size, discount, learning_rate, n_itrs, render, use_baseli
             for t in range(len(all_returns)):
                 if len(all_returns[t]) == 0:
                     baselines[t] = 0
-                    print('here')
                 else:
                     baselines[t] = np.mean(all_returns[t])
             return baselines
