@@ -323,9 +323,10 @@ def main(env_id, batch_size, discount, learning_rate, n_itrs, render, use_baseli
                 :param reg: A scalar
                 :return: A matrix of size |A| * (|S|+1)
                 """
-                natural_grad = np.zeros_like(grad)
-                "*** YOUR CODE HERE ***"
-                return natural_grad
+                # ensure that F is a positive definite by adding small values along the diagonal
+                F_inv = np.linalg.inv(F + reg * np.eye(F.shape[0]))
+                natural_grad = F_inv.dot(grad.flatten())
+                return np.reshape(natural_grad, grad.shape)
 
             def compute_step_size(F, natural_grad, natural_step_size):
                 """
@@ -334,9 +335,8 @@ def main(env_id, batch_size, discount, learning_rate, n_itrs, render, use_baseli
                 :param natural_step_size: A scalar
                 :return: A scalar
                 """
-                step_size = 0.
-                "*** YOUR CODE HERE ***"
-                return step_size
+                g_nat = natural_grad.flatten()
+                return np.sqrt((2 * natural_step_size) / (g_nat.T.dot(F.dot(g_nat))))
 
             test_once(compute_fisher_matrix)
             test_once(compute_natural_gradient)
