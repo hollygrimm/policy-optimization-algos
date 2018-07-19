@@ -1,7 +1,4 @@
 
-
-
-
 # Simple Policy Gradient Algorithm
 
 
@@ -48,9 +45,9 @@ Flask Web App with Charts:
 
 ```python viskit/frontend.py data/local/pg-cartpole```
 
+![Policy Gradient on CartPole](assets/pg-cartpole.png)
 
-
-# TRPO on CartPole-v0
+# Trust Region Policy Optimization (TRPO) on CartPole-v0
 
 200 Average Return within 20 iterations:
 
@@ -64,7 +61,7 @@ Flask Web App with Charts:
 
 ```python viskit/frontend.py data/local/trpo-cartpole```
 
-
+![TRPO on CartPole](assets/trpo-cartpole.png)
 
 # TRPO on Pendulum
 
@@ -79,6 +76,33 @@ Visualize Final Policy
 Flask Web App with Charts
 
 ```python viskit/frontend.py data/local/trpo-pendulum```
+
+![TRPO on Pendulum](assets/trpo-pendulum.png)
+
+# A2C with warm start on Pong
+
+X Average Return within X iterations
+
+```python run_a2c_pong_warm_start.py```
+
+Flask Web App with Charts
+
+```python viskit/frontend.py data/local/a2c-pong-warm-start```
+
+![A2C on Pong](assets/a2c-pong-warm-start.png)
+
+
+# A2C on Breakout
+
+X Average Return within X iterations
+
+```python run_a2c_breakout.py```
+
+Flask Web App with Charts
+
+```python viskit/frontend.py data/local/a2c-breakout```
+
+![A2C on Pong](assets/a2c-breakout.png)
 
 
 # Installation
