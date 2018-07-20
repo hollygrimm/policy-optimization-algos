@@ -85,6 +85,10 @@ X Average Return within X iterations
 
 ```python run_a2c_pong_warm_start.py```
 
+Visualize Final Policy
+
+```python sim_policy.py data/local/a2c-pong-warm-start```
+
 Flask Web App with Charts
 
 ```python viskit/frontend.py data/local/a2c-pong-warm-start```
@@ -102,7 +106,7 @@ Flask Web App with Charts
 
 ```python viskit/frontend.py data/local/a2c-breakout```
 
-![A2C on Pong](assets/a2c-breakout.png)
+![A2C on Breakout](assets/a2c-breakout.png)
 
 
 # Installation
