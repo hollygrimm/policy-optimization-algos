@@ -98,9 +98,15 @@ Flask Web App with Charts
 
 # A2C on Breakout
 
-X Average Return within X iterations
+480 Average Return within 6800 iterations
 
 ```python run_a2c_breakout.py```
+
+Visualize Final Policy
+
+```python sim_policy.py data/local/a2c-breakout```
+
+[MP4 of Game with 848 Return](assets/a2c-breakout_848.mp4)
 
 Flask Web App with Charts
 
