@@ -32,7 +32,8 @@ def main(dir):
             continue
         alg_state = state['alg_state']
         if env is None:
-            env = alg_state['env_maker'].make()
+            # save videos of all episodes to monitor_dir
+            env = alg_state['env_maker'].make(video_callable=lambda episode_id: True)
         policy = alg_state['policy']
         ob = env.reset()
         done = False

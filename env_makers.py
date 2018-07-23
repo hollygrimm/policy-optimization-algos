@@ -35,7 +35,7 @@ class EnvMaker(object):
     def __init__(self, env_id):
         self.env_id = env_id
 
-    def make(self):
+    def make(self, video_callable=False):
         env = gym.make(self.env_id)
         if logger.get_dir() is not None:
             monitor_dir = os.path.join(logger.get_dir(), "gym_monitor")
@@ -45,7 +45,7 @@ class EnvMaker(object):
             monitor_dir = "/tmp/gym-monitoring"
             resume = False
             force = True
-        env = gym.wrappers.Monitor(env, directory=monitor_dir, video_callable=False, force=force, resume=resume,
+        env = gym.wrappers.Monitor(env, directory=monitor_dir, video_callable=video_callable, force=force, resume=resume,
                                    write_upon_reset=True)
         if isinstance(env.unwrapped, AtariEnv):
             if '-ram-' in self.env_id:
