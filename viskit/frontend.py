@@ -17,7 +17,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 import os
 
 import flask
-from viskit import core
+import core
 import sys
 import argparse
 import json
@@ -95,7 +95,7 @@ def make_plot(plot_list, title=None):
                 y=y_upper + y_lower[::-1],
                 fill='tozerox',
                 fillcolor=core.hex_to_rgb(color, 0.2),
-                line=go.Line(color='transparent'),
+                line=go.Line(color='#000000'),
                 showlegend=False,
                 legendgroup=plt.legend,
                 hoverinfo='none'
